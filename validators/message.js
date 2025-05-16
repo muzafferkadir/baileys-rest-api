@@ -9,7 +9,13 @@ const checkNumber = Joi.object({
   to: Joi.string().required(),
 });
 
+const sendImage = Joi.object({
+  to: Joi.string().required(),
+  image: Joi.string().required(),
+});
+
 module.exports = {
   sendText,
   checkNumber,
+  sendImage,
 };

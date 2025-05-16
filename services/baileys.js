@@ -366,6 +366,28 @@ class WhatsAppService {
     }
   }
 
+  async sendImage(to, image) {
+    if (!this.isConnected) {
+      throw new Error('WhatsApp connection is not active');
+    }
+
+    try {
+      const result = await this.sock.sendMessage(to, { image });
+      logger.info({
+        msg: 'Image sent',
+        to,
+        imageId: result.key.id,
+      });
+      return result;
+    } catch (error) {
+      errorLogger.error({
+        msg: 'Failed to send image',
+        error: error.message,
+      });
+      throw error;
+    }
+  }
+
   async checkNumber(phoneNumber) {
     if (!this.isConnected) {
       throw new Error('WhatsApp connection is not active');
