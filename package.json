@@ -7,6 +7,9 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "keywords": [
     "whatsapp",
     "rest",
